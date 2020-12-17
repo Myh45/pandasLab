@@ -9,6 +9,8 @@ print(df.loc[6])
 df.fillna(0, inplace=True)
 print(df)
 
+df['Test']=df['Test']*12/100
+
 df.loc[df['Lab1'] == '+', 'Lab1'] = 2
 df.loc[df['Lab1'] == '/', 'Lab1'] = 1
 print(df.head())
@@ -18,7 +20,7 @@ df['L7'] = tmp.apply(lambda x: x[0]).astype(int)
 print(df)
 
 print(df[['Lab1', 'Lab2', 'L7', 'Test']].sum())
-print(df[['Lab1', 'Lab2', 'L7', 'Test']].sum(axis=1))
+print(df[['Lab1', 'Lab2', 'Test']].sum(axis=1))
 df = df.rename(columns={'L7': 'Lab7'})
 print(df.head())
 
@@ -43,6 +45,7 @@ print(df)
 print('Студенти, які здали 1 лабораторну: \n', df[df['Lab1'].isin([2,1])])
 
 df['Lab4']=2
+df['Sum'] = df[['Lab1', 'Lab2','Lab4', 'Lab7', 'Test']].sum(axis=1)
 print(df)
 
 print(df[['Student','Sum']])
